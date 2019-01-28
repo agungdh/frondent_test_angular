@@ -16,6 +16,9 @@ export class IndexComponent implements OnInit {
   constructor(private _ngZone: NgZone, private route: ActivatedRoute, private router: Router, private http: HttpClient, private service: OrangService) {}
 
   ngOnInit() {
+    this.route.params.subscribe(params => {
+      this.ambilOrang();  
+    });
     this.ambilOrang();
   }
 
