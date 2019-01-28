@@ -17,7 +17,7 @@
 
       <div class="form-group">
         <label class="col-md-4">Umur</label>
-        <input type="text" class="form-control" formControlName="umur" #umur />
+        <input type="number" class="form-control" formControlName="umur" #umur />
       </div>
       <div *ngIf="angForm.controls['umur'].invalid && (angForm.controls['umur'].dirty || angForm.controls['umur'].touched)" class="alert alert-danger">
         <div *ngIf="angForm.controls['umur'].errors.required">
