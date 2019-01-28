@@ -1,0 +1,29 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Nama</th>
+      <th>Umur</th>
+      <th>Alamat</th>
+      <th colspan="2">Proses</th>
+    </tr>
+  </thead>
+    <tr *ngFor="let item of orang">
+        <td>{{ item.id }}</td>
+        <td>{{ item.nama }}</td>
+        <td>{{ item.umur }}</td>
+        <td>{{ item.alamat }}</td>
+        <td>
+          <a [routerLink]="['/edit', item.id]" class="btn btn-primary">
+            <i class="fa fa-pencil"></i>
+          </a>
+        </td>
+        <td>
+          <button (click)="hapusOrang(item.id)"  class="btn btn-danger">
+            <i class="fa fa-trash"></i>
+          </button>
+        </td>
+    </tr>
+  <tbody>
+  </tbody>
+</table>

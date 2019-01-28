@@ -1,18 +1,31 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { IndexComponent } from './components/index/index.component';
+import { CreateComponent } from './components/create/create.component';
+import { EditComponent } from './components/edit/edit.component';
+
+import { RouterModule } from '@angular/router';
+import { appRoutes } from './routerConfig';
+import { HttpClientModule } from '@angular/common/http';
+import { ReactiveFormsModule } from '@angular/forms';
+import { OrangService } from './orang.service';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    IndexComponent,
+    CreateComponent,
+    EditComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    RouterModule.forRoot(appRoutes),
+    HttpClientModule,
+    ReactiveFormsModule
   ],
-  providers: [],
+  providers: [OrangService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,0 +1,43 @@
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    {{ title }}
+  </div>
+  <div class="panel-body">
+    <form [formGroup]="angForm" novalidate>
+      
+      <div class="form-group">
+        <label class="col-md-4">Nama</label>
+        <input type="text" class="form-control" formControlName="nama" #nama />
+      </div>
+      <div *ngIf="angForm.controls['nama'].invalid && (angForm.controls['nama'].dirty || angForm.controls['nama'].touched)" class="alert alert-danger">
+        <div *ngIf="angForm.controls['nama'].errors.required">
+          Nama is required.
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-md-4">Umur</label>
+        <input type="text" class="form-control" formControlName="umur" #umur />
+      </div>
+      <div *ngIf="angForm.controls['umur'].invalid && (angForm.controls['umur'].dirty || angForm.controls['umur'].touched)" class="alert alert-danger">
+        <div *ngIf="angForm.controls['umur'].errors.required">
+          Umur is required.
+        </div>
+      </div>
+      
+      <div class="form-group">
+        <label class="col-md-4">Alamat</label>
+        <input type="text" class="form-control" formControlName="alamat" #alamat />
+      </div>
+      <div *ngIf="angForm.controls['alamat'].invalid && (angForm.controls['alamat'].dirty || angForm.controls['alamat'].touched)" class="alert alert-danger">
+        <div *ngIf="angForm.controls['alamat'].errors.required">
+          Alamat is required.
+        </div>
+      </div>
+      
+      <div class="form-group">
+        <button (click)="tambahOrang(nama.value, umur.value, alamat.value)" [disabled]="angForm.pristine || angForm.invalid" class="btn btn-primary">Save</button>
+      </div>
+    </form>
+  </div>
+</div>
