@@ -1,6 +1,8 @@
 import { OrangService } from '../../orang.service';
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { NgZone } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-index',
@@ -11,7 +13,7 @@ export class IndexComponent implements OnInit {
 
   orang: any;
 
-  constructor(private http: HttpClient, private service: OrangService) {}
+  constructor(private _ngZone: NgZone, private route: ActivatedRoute, private router: Router, private http: HttpClient, private service: OrangService) {}
 
   ngOnInit() {
     this.ambilOrang();
@@ -27,7 +29,12 @@ export class IndexComponent implements OnInit {
 
   	hapusOrang(id) {
   		if (confirm('Yakin hapus ?')) {
-  			this.service.hapusOrang(id);
+        this.service.hapusOrang(id);
+        this.service.ambilOrang().subscribe(res => {
+          this.orang = res;
+        }, err => {
+          alert('ERROR !!!'+ "\n" + 'Server backend tidak aktif');
+        });
   		}
 	}
 }

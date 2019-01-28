@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { OrangService } from '../../orang.service';
 import { FormGroup,  FormBuilder,  Validators } from '@angular/forms';
+import { NgZone } from '@angular/core';
 
 @Component({
   selector: 'app-edit',
@@ -13,7 +14,7 @@ export class EditComponent implements OnInit {
   coin: any;
   angForm: FormGroup;
   title = 'Edit Orang';
-  constructor(private route: ActivatedRoute, private router: Router, private service: OrangService, private fb: FormBuilder) {
+  constructor(private _ngZone: NgZone, private route: ActivatedRoute, private router: Router, private service: OrangService, private fb: FormBuilder) {
     this.createForm();
    }
 
@@ -28,6 +29,9 @@ export class EditComponent implements OnInit {
   ubahOrang(nama, umur, alamat) {
     this.route.params.subscribe(params => {
     this.service.ubahOrang(nama, umur, alamat, params['id']);
+    this._ngZone.run(() => {
+      this.router.navigate(['index']);
+    });
   });
 }
 

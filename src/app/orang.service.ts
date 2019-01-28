@@ -19,7 +19,9 @@ export class OrangService {
     };
     this.http.post(uri, obj)
         .subscribe(res => {
-          location.href = "/index";
+          map(res => {
+            return res;
+          });
         }, err => {
           alert('ERROR !!!' + "\n" + err.error.description);
         });
@@ -57,7 +59,9 @@ export class OrangService {
             .http
             .put(uri, obj)
             .subscribe(res => {
-              location.href = "/index";
+              map(res => {
+                return res;
+              });
             }, err => {
               alert('ERROR !!!' + "\n" + err.error.description);
             });
@@ -69,7 +73,9 @@ export class OrangService {
             .http
             .delete(uri)
             .subscribe(res => {
-              location.href = "/index";
+              map(res => {
+                return res;
+              });
             }, err => {
               alert('ERROR !!!' + "\n" + err.error.description);
             });
